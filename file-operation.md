@@ -80,3 +80,71 @@ b'5'
 >>> f.read(1)
 b'd'
 ```
+
+> 调用`read()`会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用`read(size)`方法，每次最多读取size个字节的内容。另外，调用`readline()`可以每次读取一行内容，调用`readlines()`一次读取所有内容并按行返回`list`。因此，要根据需要决定怎么调用。
+> --阮一峰's personal blog
+
+```
+>>> f = open('./test.txt','r')
+>>> print(f.read())
+Tell me,Do you bleed?
+Batman
+The killing Joker
+>>> print(type(f.read()))
+<class 'str'>
+>>> f.close()
+```
+
+```
+>>> f = open('./test.txt','r')
+>>> print(f.readline())
+Tell me,Do you bleed?
+
+>>> print(type(f.readline()))
+<class 'str'>
+>>> f.close()
+```
+
+```
+>>> f = open('./test.txt','r')
+>>> f.readlines()
+['Tell me,Do you bleed?\n', 'Batman\n', 'The killing Joker']
+>>> print(type(f.readlines()))
+<class 'list'>
+>>> f.close()
+```
+
+自己写的word count:
+```
+import sys
+import re
+def word_count(path):
+    count = {}
+    with open(path) as f:
+        str = f.read()
+        str = str.lower()
+        str = re.sub(r'\W', ' ', str)
+
+        for word in str.split():
+            if word not in count:
+                count[word] = 1
+            else:
+                count[word] += 1
+        return count
+
+def main(argv):
+    print(word_count(argv))
+
+if __name__ == '__main__':
+    main(sys.argv[1])
+```
+```
+C:\Users\Administrator\Python\Fluent-Bat\Scripts\file-operation>python word_count.py ./reword.txt
+{'i': 3, 'am': 3, 'a': 3, 'boy': 2, 'not': 1, 'and': 1, 'girl': 1}
+
+C:\Users\Administrator\Python\Fluent-Bat\Scripts\file-operation>type reword.txt
+I am a boy?
+I am not a boy,and I am a girl.
+```
+有个比较鸡肋的是对`,.?`符合的处理，本来用replace()就可以的，但是replace()仅支持一次替换一个，同时替换多个得多次调用，所以采用正则表达式来匹配。
+其它方法下次搞搞看。
