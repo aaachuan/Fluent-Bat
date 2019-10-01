@@ -149,4 +149,46 @@ I am not a boy,and I am a girl.
 有个比较鸡肋的是对`,.?`符合的处理，本来用replace()就可以的，但是replace()仅支持一次替换一个，同时替换多个得多次调用，所以采用正则表达式来匹配。
 其它方法下次搞搞看。
 #### Python处理log
-...
+字符串是不可变的有序集合
+```
+>>> s = 'hello'
+>>> s[0] = 'H'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+>>> s = 'H' + s[1:]
+>>> s
+'Hello'
+>>> s + 'world'
+'Helloworld'
+>>> s * 3
+'HelloHelloHello'
+>>> char = ['a', 'b', 'c', 'd']
+>>> ', '.join(char)
+'a, b, c, d'
+>>> s[::-1]
+'olleH'
+>>> ''.join(reversed(s))
+'olleH'
+>>>
+```
+文件和目录操作
+列出当前目录下的所有目录:
+```
+>>> import os
+>>> os.listdir()
+['cache.bak', 'cache.dat', 'cache.dir', 'dbm_exitsing.py', 'dbm_new.py', 'dbm_official_example.py', 'dbm_test.py', 'example.db.bak', 'example.db.dat', 'example.db.dir', 'websites.bak', 'websites.dat', 'websites.dir']
+>>> [x for x in os.listdir('.') if os.path.isdir(x)]
+[]
+```
+列出所有的`.py`文件：
+```
+>>> [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.py']
+['dbm_exitsing.py', 'dbm_new.py', 'dbm_official_example.py', 'dbm_test.py']
+```
+os.path.splitext(x)将文件名和扩展名分开。利用Python内置的字符串方法后缀匹配，可以更加简短，通用性更好：
+```
+>>> [x for x in os.listdir() if x.endswith('.py')]
+['dbm_exitsing.py', 'dbm_new.py', 'dbm_official_example.py', 'dbm_test.py']
+```
+(os.path)[https://docs.python.org/zh-cn/3/library/os.path.html]
