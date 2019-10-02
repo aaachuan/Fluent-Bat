@@ -148,7 +148,9 @@ I am not a boy,and I am a girl.
 ```
 有个比较鸡肋的是对`,.?`符合的处理，本来用replace()就可以的，但是replace()仅支持一次替换一个，同时替换多个得多次调用，所以采用正则表达式来匹配。
 其它方法下次搞搞看。
+
 #### Python处理log
+
 字符串是不可变的有序集合
 ```
 >>> s = 'hello'
@@ -189,6 +191,7 @@ Type:      method_descriptor
 join的参数是iterable。
 
 文件和目录操作
+
 列出当前目录下的所有目录:
 ```
 >>> import os
