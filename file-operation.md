@@ -172,6 +172,22 @@ TypeError: 'str' object does not support item assignment
 'olleH'
 >>>
 ```
+join用以连接字符串列表，需要先有字符串，再调用这个函数，join对分隔符没有任何要求，任何一个合法的字符串都可以。
+IPython查看join函数的帮助文档：
+```
+In [1]: str.join?
+Signature: str.join(self, iterable, /)
+Docstring:
+Concatenate any number of strings.
+
+The string whose method is called is inserted in between each given string.
+The result is returned as a new string.
+
+Example: '.'.join(['ab', 'pq', 'rs']) -> 'ab.pq.rs'
+Type:      method_descriptor
+```
+join的参数是iterable。
+
 文件和目录操作
 列出当前目录下的所有目录:
 ```
