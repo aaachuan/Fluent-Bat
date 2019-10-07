@@ -30,7 +30,9 @@ Date: Mon, 07 Oct 2019 13:53:48 GMT
 Content-type: text/html; charset=utf-8
 Content-Length: 391
 ```
+
 [Inspect Network Activity In Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/network)
+
 服务端：
 ```
 127.0.0.1 - - [07/Oct/2019 21:47:22] "GET / HTTP/1.1" 200 -
@@ -52,7 +54,9 @@ print(r)
 ```
 可以使用tcpdump监听本地网卡tcp连接进一步查看详情，windows有 LBNL's Network Research Group在UNIX系统上开发的tcpdump基础上，
 二次开发的Microolap TCPDUMP for Windows，几乎和类UNIX系统上的一模一样。
+
 [Command-line sniffer (packet capture tool) for Windows](http://www.microolap.com/products/network/tcpdump/)
+
 ```
 C:\Users\Administrator\Python>tcpdump -D
 
