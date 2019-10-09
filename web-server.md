@@ -85,3 +85,5 @@ C:\Users\Administrator\Python>tcpdump -D
 2.\Device\{28FFE6D3-45BC-44D5-9538-C24C545FBFD0} (Broadcom NetLink (TM) Fast Ethernet)
 3.\Device\{31E2C8B0-7003-4991-B7A9-603E4BB2EC35} (Broadcom 802.11g 网络适配器)
 ```
+
+[Socket With Python](https://gist.github.com/aaachuan)
